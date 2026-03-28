@@ -1,0 +1,12 @@
+import { NextRequest, NextResponse } from "next/server";
+
+export async function POST(req: NextRequest) {
+  try {
+    const body = await req.json();
+    console.log("GitHub webhook received:", body);
+    // Process GitHub webhook events
+    return NextResponse.json({ success: true });
+  } catch {
+    return NextResponse.json({ error: "Invalid webhook payload" }, { status: 400 });
+  }
+}
